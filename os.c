@@ -9,6 +9,8 @@
 
 #include "os.h"
 
+#include <inttypes.h>
+
 /* 2^20 pages ought to be enough for anybody */
 #define NPAGES	(1024*1024)
 
