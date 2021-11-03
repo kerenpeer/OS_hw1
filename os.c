@@ -85,10 +85,10 @@ int main(int argc, char **argv)
 	assert(page_table_query(pt, 0xcafe) == 0xacdc);
 	page_table_update(pt, 0xcaff, 0xaaaa);
 	printf("e is:\n");
-	printf(page_table_query(pt, 0xcafe));
+	printf("%x",page_table_query(pt, 0xcafe));
 	printf("\n");
 	printf("f is:\n");
-	printf(page_table_query(pt, 0xcaff));
+	printf("%x",page_table_query(pt, 0xcaff));
 	/*assert(page_table_query(pt, 0xcafe) == 0xacdc);*/
 	page_table_update(pt, 0xcafe, NO_MAPPING);
 	page_table_update(pt, 0xcaff, NO_MAPPING);
