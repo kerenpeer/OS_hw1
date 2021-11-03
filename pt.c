@@ -1,10 +1,3 @@
-#include <assert.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <err.h>
-#include <sys/mman.h>
-#include <inttypes.h>
-
 #include "os.h"
 # define LEVELS 5
 # define VPN_BLOCK_SIZE 9
