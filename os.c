@@ -108,7 +108,6 @@ int main(int argc, char **argv)
 	tmp = phys_to_virt((tmp[0] >> 12) << 12);
 	tmp = phys_to_virt((tmp[0] >> 12) << 12);
 	tmp[0] = ((tmp[0] >> 1) << 1);
-	printf("%" PRIu64 "\n", tmp[0]);
 	assert(page_table_query(pt, 0x1ffff8000000) == NO_MAPPING);
 	printf("6th Test: PASSED\n\n----------------\n");
 	
