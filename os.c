@@ -84,7 +84,7 @@ int main(int argc, char **argv)
 	page_table_update(pt, 0xcafe, 0xacdc);
 	assert(page_table_query(pt, 0xcafe) == 0xacdc);
 	page_table_update(pt, 0xcaff, 0xaaaa);
-	assert(page_table_query(pt, 0xcafe) == 0xacdc);
+	assert(page_table_query(pt, 0xcafe) == 0xaaaa);
 	page_table_update(pt, 0xcafe, NO_MAPPING);
 	page_table_update(pt, 0xcaff, NO_MAPPING);
 	assert(page_table_query(pt, 0xcafe) == NO_MAPPING);
