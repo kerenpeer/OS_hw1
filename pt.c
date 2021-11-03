@@ -61,7 +61,7 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
     last_index = get_curr(vpn,5);
     ppn = level[last_index];
     if((ppn & 1) != 1){
-            return NO_MAPPING;
+        return NO_MAPPING;
     }
-    return (ppn >>12);
+    return (ppn >> 12);
 }
