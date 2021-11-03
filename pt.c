@@ -22,17 +22,17 @@ void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
                 return;
             }
             else{
-                level[curr_index] = (alloc_page_frame() << 12) + 1;
+                level[curr_index] = (alloc_page_frame() << 12) | 1;
                 pte = level[curr_index];
             }  
         }
         level = phys_to_virt(pte & (~1));
     }
     if(ppn == NO_MAPPING){
-        *level = 0;
+        level[5] = 0;
     }
     else{
-        *level = (ppn << 12)+1;
+        level[5] = (ppn << 12)+1;
     }
 }
 
