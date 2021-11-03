@@ -26,7 +26,7 @@ void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
     uint64_t curr_index, pte, last_index;
     
     uint64_t* level = phys_to_virt(pt << 12);
-    for(i = 0; i < LEVELS; i++){
+    for(i = 1; i < LEVELS; i++){
         curr_index = get_curr(vpn,i);
         pte = level[curr_index];
         if((pte & 1) != 1){
@@ -55,7 +55,7 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
 
     uint64_t* level = phys_to_virt(pt << 12);
 
-    for(i = 1; i < LEVELS; i++){
+    for(i = 1; i <=5 LEVELS; i++){
         curr_index = get_curr(vpn,i);
         pte = level[curr_index];
         if((pte & 1) != 1){
