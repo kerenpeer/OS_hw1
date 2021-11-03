@@ -26,7 +26,7 @@ void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
     uint64_t curr_index, pte, last_index;
     
     uint64_t* level = phys_to_virt(pt << 12);
-    for(i = 1; i < LEVELS; i++){
+    for(i = 0; i < LEVELS; i++){
         curr_index = get_curr(vpn,i);
         pte = level[curr_index];
         if((pte & 1) != 1){
@@ -38,9 +38,9 @@ void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
                 pte = level[curr_index];
             }  
         }
-        level = phys_to_virt(pte & (~1));
+        level = phys_to_virt(pte & 0xFFFFFFFFFFFFF000);
     }
-    last_index = get_curr(vpn,5);
+    last_index = get_curr(vpn, LEVELS);
     if(ppn == NO_MAPPING){
         level[last_index] = 0;
     }
@@ -55,20 +55,16 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
 
     uint64_t* level = phys_to_virt(pt << 12);
 
-    for(i = 1; i <= LEVELS; i++){
+    for(i = 0; i < LEVELS; i++){
         curr_index = get_curr(vpn,i);
         pte = level[curr_index];
         if((pte & 1) != 1){
             return NO_MAPPING;
         }
-        level = phys_to_virt(pte & (~1));
+        level = phys_to_virt(pte & 0xFFFFFFFFFFFFF000);
     }
     last_index = get_curr(vpn, LEVELS);
     ppn = level[last_index];
-    printf("ppn is:\n");
-    printf("%" PRIu64 "\n", ppn);
-    printf("valid is:\n");
-    printf("%" PRIu64 "\n", (ppn & 1));
     if((ppn & 1) != 1){
         return NO_MAPPING;
     }
