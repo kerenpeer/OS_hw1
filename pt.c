@@ -1,4 +1,15 @@
 # include "os.h"
+
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <err.h>
+#include <sys/mman.h>
+
+#include "os.h"
+
+#include <inttypes.h>
+
 # define LEVELS 5
 # define VPN_BLOCK_SIZE 9
 
@@ -60,6 +71,7 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
     }
     last_index = get_curr(vpn,5);
     ppn = level[last_index];
+    printf("%" PRIu64 "\n", ppn);
     if((ppn & 1) != 1){
         return NO_MAPPING;
     }
