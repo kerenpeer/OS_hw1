@@ -68,7 +68,7 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
     printf("ppn is:\n");
     printf("%" PRIu64 "\n", ppn);
     printf("valid is:\n");
-    printf("%d\n", (ppn & 1));
+    printf("%" PRIu64 "\n", (ppn & 1));
     if((ppn & 1) != 1){
         return NO_MAPPING;
     }
