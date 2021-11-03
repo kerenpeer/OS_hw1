@@ -66,8 +66,6 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
     }
     last_index = get_curr(vpn, LEVELS);
     ppn = level[last_index];
-    printf("valid is:\n");
-    printf("%" PRIu64 "\n",(ppn & 1));
     if((ppn & 1) != 1){
         return NO_MAPPING;
     }
