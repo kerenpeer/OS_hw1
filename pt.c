@@ -23,8 +23,8 @@ int get_curr(uint64_t vpn, int j){
 }
 
 void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
-    int i;
-    uint64_t curr_index, pte, last_index;
+    int i, curr_index, last_index;
+    uint64_t pte;
     
     uint64_t* level = phys_to_virt(pt << 12);
     for(i = 0; i < LEVELS; i++){
@@ -51,8 +51,8 @@ void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
 }
 
 uint64_t page_table_query(uint64_t pt, uint64_t vpn){
-    int i;
-    uint64_t curr_index, pte, ppn, last_index;
+    int i, curr_index, last_index;
+    uint64_t pte, ppn;
 
     uint64_t* level = phys_to_virt(pt << 12);
 
