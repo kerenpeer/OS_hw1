@@ -26,7 +26,7 @@ void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn){
                 pte = level[curr_index];
             }  
         }
-        level = phys_to_virt(pte & 18446744073709551614);
+        level = phys_to_virt(pte & (~1));
     }
     if(ppn == NO_MAPPING){
         *level = 0;
