@@ -1,7 +1,9 @@
 # include "os.h"
+#include <inttypes.h>
 # define LEVELS 5
 # define VPN_BLOCK_SIZE 9
-#include <inttypes.h>
+
+
 
 uint64_t get_curr(uint64_t vpn, int j);
 void page_table_update(uint64_t pt, uint64_t vpn, uint64_t ppn);
@@ -12,7 +14,7 @@ uint64_t get_curr(uint64_t vpn, int j){
     int mask;
     mask = ((1 << VPN_BLOCK_SIZE) - 1);
     curr = (vpn >> (45-9*j)) & mask;
-    printf("%" PRIu64 "\n",curr);
+    printf("%" PRIu64 "\n", curr);
     return curr; 
 }
 
