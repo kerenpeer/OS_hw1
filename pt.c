@@ -49,7 +49,7 @@ uint64_t page_table_query(uint64_t pt, uint64_t vpn){
 
     uint64_t* level = phys_to_virt(pt << 12);
 
-    for(i = 0; i < LEVELS; i++){
+    for(i = 1; i < LEVELS; i++){
         curr_index = get_curr(vpn,i);
         pte = level[curr_index];
         if((pte & 1) != 1){
